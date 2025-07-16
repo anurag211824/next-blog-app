@@ -1,18 +1,24 @@
 import { blog_data } from "@/assets/assets";
 import React, { useEffect, useState } from "react";
 import BlogItem from "./BlogItem";
+import axios from "axios";
 
 const BlogList = () => {
   const [menu, setMenu] = useState("All");
-  //   const [blogData, setBlogData] = useState([]);
-  //   useEffect(() => {
-  //     if (menu === "All") {
-  //       setBlogData(blog_data);
-  //     } else {
-  //       const filteredBlog = blog_data.filter((blog) => blog.category === menu);
-  //       setBlogData(filteredBlog);
-  //     }
-  //   }, [menu]);
+  const [blogs, setBlogs] = useState([]);
+  const fetchBlogs = async () => {
+    try {
+      const response = await axios.get("api/blog");
+      setBlogs(response.data.blogs);
+      console.log(response.data.blogs);
+      
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  useEffect(() => {
+    fetchBlogs();
+  }, []);
   return (
     <div>
       <div className="flex justify-center gap-6 my-10">
@@ -54,12 +60,12 @@ const BlogList = () => {
         </button>
       </div>
       <div className="p-5 max-w-[1300px] mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
-        {blog_data
+        {blogs
           .filter((item) => (menu === "All" ? true : item.category === menu))
           .map((item, index) => (
             <BlogItem
               key={index}
-              id={item.id}
+              id={item._id}
               image={item.image}
               title={item.title}
               description={item.description}

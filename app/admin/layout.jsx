@@ -8,7 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 export default function Layout({ children }) {
   return (
     <>
-      <div className="flex">
+      <div className="flex flex-col custom sm:flex-row">
         <ToastContainer theme="dark"/>
         <Sidebar />
         <div className="flex flex-col w-full">

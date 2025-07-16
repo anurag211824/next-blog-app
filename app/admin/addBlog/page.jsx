@@ -2,7 +2,7 @@
 import { assets } from "@/assets/assets";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import axios from "axios"
+import axios from "axios";
 import { toast } from "react-toastify";
 
 const page = () => {
@@ -14,9 +14,6 @@ const page = () => {
     author: "Anurag",
     authorImg: "/author_img.png",
   });
-  useEffect(() => {
-  toast.info("✅ Toast test working");
-}, []);
   const onChangeHandler = (event) => {
     const name = event.target.name;
     const value = event.target.value;
@@ -30,19 +27,26 @@ const page = () => {
     formData.append("category", data.category);
     formData.append("authorImg", data.authorImg);
     formData.append("author", data.author);
-    formData.append('image',image)
-      // ✅ Use this to see the actual content of FormData
-  console.log("🔍 FormData contents:");
-  for (let [key, value] of formData.entries()) {
-    console.log(`${key}:`, value);
-  }
-    
-    const response = await axios.post("/api/blog",formData)
-    if(response.data.success === true){
-      toast.success(response.data.message)
+    formData.append("image", image);
+    // ✅ Use this to see the actual content of FormData
+    console.log("🔍 FormData contents:");
+    for (let [key, value] of formData.entries()) {
+      console.log(`${key}:`, value);
     }
-    else{
-      toast.error(response.data.error)
+
+    const response = await axios.post("/api/blog", formData);
+    if (response.data.success === true) {
+      toast.success(response.data.message);
+      setImage(false);
+      setData({
+        title: "",
+        description: "",
+        category: "StartUp",
+        author: "Anurag",
+        authorImg: "/author_img.png",
+      });
+    } else {
+      toast.error(response.data.error);
     }
   };
 
@@ -97,7 +101,7 @@ const page = () => {
         >
           <option value="Startup">Startup</option>
           <option value="Technology">Technology</option>
-          <option value="LifeStyle">LifeStyle</option>
+          <option value="Lifestyle">Lifestyle</option>
         </select>
         <br></br>
         <button type="submit" className="mt-8 w-48 h-12 bg-black text-white">

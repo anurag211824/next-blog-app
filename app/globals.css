@@ -1,1 +1,21 @@
 @import "tailwindcss";
+
+.scrollbar-hide::-webkit-scrollbar{
+    display: none;
+}
+.scrollbar-hide::-webkit-scrollbar{
+   -ms-overflow-style:none;
+   scrollbar-width: none;
+}
+@media (max-width: 925px) {
+  .custom {
+    flex-direction: column !important;
+  }
+  .sidebar{
+    width: 100%;
+    height:40vh;
+  }
+  .sidebar-content{
+    width: 100%;
+  }
+}
