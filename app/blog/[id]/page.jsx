@@ -55,53 +55,14 @@ const Page = ({ params }) => {
       <div className="mx-5 max-w-[800px] md:mx-auto mt-[-100px] mb-10">
         <Image src={data.image} alt="blogImage" width={720} height={720} />
         <h1 className="my-8 text-[26px] font-semibold">Introduction:</h1>
-        <p>{data.description}</p>
-        <h3 className="my-5 text-[18px] font-semibold">
-          Step 1: Self-Reflection and Awareness
-        </h3>
-        <p className="my-3">
-          Before you can manage your lifestyle, you must have a clear
-          understanding of your current habits, daily routines, and mental
-          patterns. Self-reflection allows you to identify what’s working and
-          what isn’t. Take time each day or week to journal your actions,
-          emotions, and choices. This awareness is the foundation of personal
-          growth.
-        </p>
+         <div className="blog-content" dangerouslySetInnerHTML={{__html:data.description}}>
 
-        <h3 className="my-5 text-[18px] font-semibold">
-          Step 2: Setting Clear and Achievable Goals
-        </h3>
-        <p className="my-3">
-          Goal setting is essential for progress. Define what you want to
-          improve—whether it's physical health, time management, or emotional
-          well-being. Set SMART goals (Specific, Measurable, Achievable,
-          Relevant, Time-bound) and break them into smaller milestones. The
-          clarity of your goals will guide your daily actions and keep you
-          motivated.
-        </p>
-
-        <h3 className="my-5 text-[18px] font-semibold">
-          Step 3: Taking Consistent Action and Tracking Progress
-        </h3>
-        <p className="my-3">
-          Change happens through consistent effort. Develop routines and habits
-          that align with your goals. Use planners, habit trackers, or digital
-          tools to monitor your progress. Celebrate small wins and learn from
-          setbacks. Remember, lifestyle management is not about perfection but
-          about persistence and improvement over time.
-        </p>
-
-        <h3 className="my-5 text-[18px] font-semibold">Conclusion:</h3>
-        <p className="my-3">
-          Managing your lifestyle is a journey that requires commitment,
-          patience, and flexibility. It starts with knowing yourself, setting
-          intentions, and showing up every day with purpose. As you grow and
-          evolve, so will your lifestyle. Stay mindful, stay disciplined, and
-          never stop striving to become the best version of yourself.
-        </p>
+         </div>
+       
+        
         <div className="my-24">
           <p className="text-black font font-semibold my-4">
-            share this article on social media
+            Share this article on social media
           </p>
           <div className="flex">
             <Image src={assets.facebook_icon} width={50} alt="socail media" />

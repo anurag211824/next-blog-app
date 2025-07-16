@@ -8,7 +8,7 @@ const LoadDB = async () => {
 };
 LoadDB();
 
-//Api end point to get all blogs
+//Api end point to get all blog
 export async function GET(request) {
   const blogId = request.nextUrl.searchParams.get("id");
   if (blogId) {
